@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/jdbc
+		http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<mvc:annotation-driven/> 
+	<context:component-scan base-package="au.com.energyaustralia.url" />
+
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="objectMapper" ref="jacksonObjectMapper" />
+		<property name="supportedMediaTypes">
+			<list>
+				<bean class="org.springframework.http.MediaType">
+					<constructor-arg index="0" value="application" />
+					<constructor-arg index="1" value="json" />
+					<constructor-arg index="2" value="UTF-8" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="jaxbAnnotationInspector" class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />
+	<bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+	    <property name="annotationIntrospector" ref="jaxbAnnotationInspector" />
+	</bean>
+
+    <bean id="dbDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="org.h2.Driver"/>
+		<property name="url" value="jdbc:h2:mem:test;MODE=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/>
+		<property name="username" value=""/>
+		<property name="password" value=""/>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dbDataSource"/>
+	</bean>
+
+	<jdbc:initialize-database data-source="dbDataSource" ignore-failures="DROPS">
+		<jdbc:script location="file:db/test-create-all.sql" />
+	</jdbc:initialize-database>
+	
+	<bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">  
+		<constructor-arg ref="dbDataSource" />
+	</bean>
+
+	<bean id="urlDetailsDao" class="au.com.energyaustralia.url.dao.UrlDetailsDaoImpl">
+        <property name="dataSource" ref="dbDataSource" />
+    </bean>
+
+    <bean id="urlCleanerJob" class="au.com.energyaustralia.url.scheduler.UrlCleanerJob">
+    	<property name="expiryTime" value="10"/> <!-- Minutes -->
+    </bean>
+
+</beans>
