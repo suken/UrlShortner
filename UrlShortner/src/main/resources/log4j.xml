@@ -10,17 +10,6 @@
         </layout>
     </appender>
 
-    <appender name="urlshortner-log" class="au.com.energyaustralia.logging.CustodianDailyRollingFileAppender" >
-        <param name="threshold" value="info"/>
-        <param name="file" value="logs/urlshortner.log"/>
-        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
-	    <param name="MaxNumberOfDays" value="30"/>
-	    <param name="CompressBackups" value="true"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%-5p - %d - %c: %m%n" />
-        </layout>
-    </appender>
-
     <!-- 3rdparty Loggers -->
     <logger name="org.springframework.core">
         <level value="info" />
@@ -43,7 +32,6 @@
     <root>
         <priority value="info" />
         <appender-ref ref="console" />
-        <appender-ref ref="urlshortner-log" />
     </root>
 
 </log4j:configuration>

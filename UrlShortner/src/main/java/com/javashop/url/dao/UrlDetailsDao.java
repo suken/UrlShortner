@@ -20,7 +20,7 @@
  *     @@@@@
  */
 
-package au.com.energyaustralia.url.dao;
+package com.javashop.url.dao;
 
 
 

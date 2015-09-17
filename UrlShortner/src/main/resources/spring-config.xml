@@ -15,24 +15,17 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<mvc:annotation-driven/> 
-    <context:component-scan base-package="au.com.energyaustralia.url" />
+    <context:component-scan base-package="com.javashop.url" />
 
     <bean id="urlShortnerDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName" value="${urlShortner.dataSource}"/>
     </bean>
 
-    <!--<bean id="urlShortnerDataSource"-->
-    <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource"-->
-    <!--p:driverClassName="oracle.jdbc.OracleDriver"-->
-    <!--p:url="jdbc:oracle:thin:@bne3-0572d.server-web.com:1521:eaus"-->
-    <!--p:username="DEVQT2MANAGER"-->
-    <!--p:password="DEVQT2MANAGER_pw" />-->
-
-    <bean id="urlDetailsDao" class="au.com.energyaustralia.url.dao.UrlDetailsDao">
+    <bean id="urlDetailsDao" class="com.javashop.url.dao.UrlDetailsDao">
         <property name="dataSource" ref="urlShortnerDataSource" />
     </bean>
 
-    <bean id="urlCleanerJob" class="au.com.energyaustralia.url.scheduler.UrlCleanerJob">
+    <bean id="urlCleanerJob" class="com.javashop.url.scheduler.UrlCleanerJob">
     	<property name="expiryTime" value="10"/> <!-- Minutes -->
     </bean>
 

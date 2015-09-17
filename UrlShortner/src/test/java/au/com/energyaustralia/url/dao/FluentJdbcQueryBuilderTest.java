@@ -26,7 +26,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import au.com.energyaustralia.url.dao.FluentJdbcQueryBuilder.QueryStatement;
+import com.javashop.url.dao.FluentJdbcQueryBuilder;
+import com.javashop.url.dao.FluentJdbcQueryBuilder.QueryStatement;
 
 //
 // IMPORTS

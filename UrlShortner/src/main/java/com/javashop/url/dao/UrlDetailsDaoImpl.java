@@ -20,7 +20,7 @@
  *     @@@@@
  */
 
-package au.com.energyaustralia.url.dao;
+package com.javashop.url.dao;
 
 import java.util.List;
 
@@ -55,7 +55,7 @@ public class UrlDetailsDaoImpl extends JdbcDaoSupport implements UrlDetailsDao {
     /**
      * {@inheritDoc}
      *
-     * @see UrlDetailsDao#save(au.com.energyaustralia.url.dao.UrlDetail)
+     * @see UrlDetailsDao#save(com.javashop.url.dao.UrlDetail)
      */
     public Long save(final String longUrl) {
         if (LOGGER.isDebugEnabled())

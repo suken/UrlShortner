@@ -20,14 +20,14 @@
  *     @@@@@
  */
 
-package au.com.energyaustralia.url.scheduler;
+package com.javashop.url.scheduler;
 
 import org.apache.log4j.Logger;
 import org.springframework.batch.core.Job;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import au.com.energyaustralia.url.dao.UrlDetailsDao;
+import com.javashop.url.dao.UrlDetailsDao;
 
 
 //

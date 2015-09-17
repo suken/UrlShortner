@@ -14,7 +14,7 @@
  * @@@@@
  */
 
-package au.com.energyaustralia.url.dao;
+package com.javashop.url.dao;
 
 import java.util.Iterator;
 import java.util.List;

@@ -34,6 +34,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.javashop.url.dao.UrlDetail;
+import com.javashop.url.dao.UrlDetailsDaoImpl;
+
 //
 // IMPORTS
 // NOTE: Import specific classes without using wildcards.

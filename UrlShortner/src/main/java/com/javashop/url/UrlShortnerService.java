@@ -20,7 +20,7 @@
  *     @@@@@
  */
 
-package au.com.energyaustralia.url;
+package com.javashop.url;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
@@ -35,11 +35,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import au.com.energyaustralia.url.UrlResponse.Status;
-import au.com.energyaustralia.url.dao.UrlDetail;
-import au.com.energyaustralia.url.dao.UrlDetailsDao;
-
 import com.google.common.base.Strings;
+import com.javashop.url.UrlResponse.Status;
+import com.javashop.url.dao.UrlDetail;
+import com.javashop.url.dao.UrlDetailsDao;
 
 //
 // IMPORTS

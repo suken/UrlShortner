@@ -48,7 +48,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import au.com.energyaustralia.url.UrlResponse.Status;
+import com.javashop.url.UrlRequest;
+import com.javashop.url.UrlResponse;
+import com.javashop.url.UrlShortnerService;
+import com.javashop.url.UrlResponse.Status;
 
 //
 // IMPORTS
